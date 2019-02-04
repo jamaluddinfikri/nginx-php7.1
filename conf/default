@@ -1,0 +1,22 @@
+server {
+
+    listen 80;
+
+    server_name _;
+
+
+    access_log /var/log/nginx/access.log; 
+    error_log /var/log/nginx/error.log;
+
+
+    root /var/www/html;    
+    
+
+    index index.php index.html index.htm;
+
+
+    include common/php71.conf;      
+
+    include common/locations.conf;
+    include common/nginx-cache.conf;
+}
