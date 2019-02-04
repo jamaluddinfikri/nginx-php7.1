@@ -6,7 +6,7 @@ RUN apt-get update \
 && wget https://raw.githubusercontent.com/VirtuBox/nginx-ee/master/nginx-build.sh && bash nginx-build.sh --stable \
 && mkdir -p /etc/nginx/sites-enabled
 
-RUN apt-get install software-properties-common wget \
+RUN apt-get install software-properties-common wget supervisor \
 && add-apt-repository ppa:ondrej/php \
 && apt-get update && apt install php7.1-fpm php7.1-cli php7.1-zip php7.1-opcache php7.1-mysql php7.1-mcrypt php7.1-mbstring php7.1-json php7.1-intl \
 php7.1-gd php7.1-curl php7.1-bz2 php7.1-xml php7.1-tidy php7.1-soap php7.1-bcmath -y
@@ -17,7 +17,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
 && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --version=${COMPOSER_VERSION} && rm -rf /tmp/composer-setup.php \
-&& apt-get clean
+&& apt-get clean && rm -rf /usr/local/src/*
 
 
 COPY ./conf/common/* /etc/nginx/common/
