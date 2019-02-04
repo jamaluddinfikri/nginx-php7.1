@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER jamaluddin fikri <mangsasip@gmail.com>
 
 RUN apt-get update -y \
-&& apt-get install software-properties-common wget supervisor language-pack-en -y \
+&& apt-get install software-properties-common wget supervisor language-pack-en apt-utils -y \
 && update-locale LANG=en_US.UTF-8 \
 && wget https://raw.githubusercontent.com/VirtuBox/nginx-ee/master/nginx-build.sh && bash nginx-build.sh --stable \
 && mkdir -p /etc/nginx/sites-enabled
