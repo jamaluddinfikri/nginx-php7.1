@@ -31,6 +31,7 @@ ADD ./index.php /var/www/html/
 ADD ./conf/supervisord.conf /etc/supervisord.conf
 ADD ./start.sh /start.sh
 
+RUN chmod +x /start.sh
 
 EXPOSE 80 443
 CMD ["/start.sh"]
