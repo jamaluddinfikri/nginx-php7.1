@@ -23,6 +23,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 COPY ./conf/common/* /etc/nginx/common/
 ADD ./conf/default /etc/nginx/sites-enabled/
 ADD ./conf/php/php.ini /etc/php/7.1/fpm/
+ADD ./index.php /var/www/html/
 ADD ./conf/supervisord.conf /etc/supervisord.conf
 ADD ./start.sh /start.sh
 
